@@ -59,7 +59,9 @@ class AlbumHandler {
 
     await this._service.updateCover(filename, id);
 
-    await this._storageService.removeFile(oldCover.cover);
+    if (oldCover.cover) {
+      await this._storageService.removeFile(oldCover.cover);
+    }
 
     return Response.put(h, 'success', 'Sampul berhasil diunggah');
   }
